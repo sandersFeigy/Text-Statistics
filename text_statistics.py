@@ -13,15 +13,14 @@ class TextStatistics:
         self.__number_of_sentences = 0
         self.__longest_sequence_not_contain_k = ""
         self.__syntactic_words = ["there", "or", "when", "from", "if", "no", "they", "were", "all", "so", "which",
-                                  "she", "this", "by", "me", "not", "him", "be", "have", "said", "my", "mr", "is", "on",
+                                  "she", "this", "by", "me", "not", "him", "be", "have", "said", "my",   "is", "on",
                                   "her", "at", "for", "had", "as", "with", "in", "a", "you", "but", "to", "i", "he",
                                   "and", "do", "his", "am", "was", "are", "it", "doesnt", "dont", "that", "the", "of",
-                                  "one", "what", "very", "been", "who", "an", "out", "would", "upon", "up", "we",
-                                  "little", "into", "them", "their", "your", "more", "man", "its", "now", "old", "some",
-                                  "could", "time", "mrs", "sir", "know", "will", "down", "then", "any", "than", "never",
-                                  "about", "has", "such", "say", "again", "before", "like", "much", "great", "here",
-                                  "being", "come", "himself", "other", "good", "how", "well", "should", "made", "see",
-                                  "two"]
+                                  "one", "what", "very", "been", "who", "an",  "would",  "up", "we",
+                                  "little", "into", "them", "their", "your", "more",   "its", "now",   "some",
+                                  "could",   "will",   "then", "any", "than", "never",
+                                  "about", "has", "such",  "again", "before", "like", "much", "here",
+                                  "being", "come", "himself", "other",  "how", "well", "should"  ]
 
         # Goes through the entire file and takes the desired information for the statistics
         with open(file_path, "r", encoding='unicode_escape') as f:
