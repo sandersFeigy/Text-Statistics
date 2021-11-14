@@ -87,12 +87,12 @@ class TextStatistics:
     def k_sequence(self, line):
         k_idx = line.find("k")
         if k_idx == -1:
-            self.__sequence_not_contain_k += line
+            self.__sequence_not_contain_k += "\t" + line
         else:
             while k_idx != -1:
                 temp_words = " ".join(line[:k_idx].split(" ")[:-1])
                 if len(self.__sequence_not_contain_k + temp_words) > len(self.__longest_sequence_not_contain_k):
-                    self.__longest_sequence_not_contain_k = self.__sequence_not_contain_k + temp_words
+                    self.__longest_sequence_not_contain_k = self.__sequence_not_contain_k + "\t" + temp_words
                 line = " ".join(line[k_idx:].split(" ")[1:])
                 k_idx = line.find("k")
             self.__sequence_not_contain_k = line
@@ -122,6 +122,6 @@ class TextStatistics:
                "The most popular word in the text that as no syntactic meaning : " + \
                f"\"{self.__max_appearance_not_syntactic_word}\", \n\n" + \
                "The longest word sequence in the text that does not contain the letter k : \n\n" + \
-               f"\"{self.__longest_sequence_not_contain_k}\"."
+               f"\t\"{self.__longest_sequence_not_contain_k}\"."
         text += show_colors_statistics()
-        print(text+"\n============== End Of Statistics ==============")
+        print(text + "\n============== End Of Statistics ==============")

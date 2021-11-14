@@ -14,8 +14,8 @@ def show_colors_statistics():
     text = ""
     for color, counter in colors.items():
         if counter == 1:
-            text += color + " appears " + str(counter) + " time.\n"
+            text += "\t" + color + " appears " + str(counter) + " time.\n"
         elif counter > 1:
-            text += color + " appears " + str(counter) + " times.\n"
+            text += "\t" + color + " appears " + str(counter) + " times.\n"
     if text:
         return "\n\nColors in the text :\n\n" + text + "\n"

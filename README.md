@@ -65,31 +65,31 @@ run it. The output that will be obtained is the statistics.
 
         The longest word sequence in the text that does not contain the letter k :
 
-        "Color Psychology as Therapy
-        Several ancient cultures, including the Egyptians and Chinese, practiced chromotherapy, or the use of colors to
-        heal. Chromotherapy is sometimes referred to as light therapy or colorology.
+            "	Color Psychology as Therapy
+            Several ancient cultures, including the Egyptians and Chinese, practiced chromotherapy, or the use of colors to
+            heal. Chromotherapy is sometimes referred to as light therapy or colorology.
 
-        Colorology is still used today as a holistic or alternative treatment.  In this treatment:
+            Colorology is still used today as a holistic or alternative treatment.  In this treatment:
 
-        Red is used to stimulate the mind and to increase circulation.
-        Yellow is thought to stimulate the nerves and purify the body.
-        Orange is used to heal the lungs and to increase energy levels.
-        Blue is believed to soothe illnesses and treat pain.
-        Indigo shades are thought to alleviate".
+            Red is used to stimulate the mind and to increase circulation.
+            Yellow is thought to stimulate the nerves and purify the body.
+            Orange is used to heal the lungs and to increase energy levels.
+            Blue is believed to soothe illnesses and treat pain.
+            Indigo shades are thought to alleviate".
 
         Colors in the text :
 
-        black appears 1 time.
-        blue appears 5 times.
-        brown appears 1 time.
-        green appears 2 times.
-        indigo appears 1 time.
-        orange appears 3 times.
-        pink appears 1 time.
-        purple appears 2 times.
-        red appears 4 times.
-        white appears 1 time.
-        yellow appears 3 times.
+            black appears 1 time.
+            blue appears 5 times.
+            brown appears 1 time.
+            green appears 2 times.
+            indigo appears 1 time.
+            orange appears 3 times.
+            pink appears 1 time.
+            purple appears 2 times.
+            red appears 4 times.
+            white appears 1 time.
+            yellow appears 3 times.
 
 
         ============== End Of Statistics ==============
