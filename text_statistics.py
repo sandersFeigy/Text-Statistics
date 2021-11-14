@@ -1,4 +1,5 @@
-from utils import remove_special_chars
+from utils import remove_special_chars, show_colors_statistics
+from data import syntactic_words, colors
 
 
 # Get a path to a text file and create an object that contain the statistics about the file
@@ -12,15 +13,6 @@ class TextStatistics:
         self.__max_sentence = 0
         self.__number_of_sentences = 0
         self.__longest_sequence_not_contain_k = ""
-        self.__syntactic_words = ["there", "or", "when", "from", "if", "no", "they", "were", "all", "so", "which",
-                                  "she", "this", "by", "me", "not", "him", "be", "have", "said", "my",   "is", "on",
-                                  "her", "at", "for", "had", "as", "with", "in", "a", "you", "but", "to", "i", "he",
-                                  "and", "do", "his", "am", "was", "are", "it", "doesnt", "dont", "that", "the", "of",
-                                  "one", "what", "very", "been", "who", "an",  "would",  "up", "we",
-                                  "little", "into", "them", "their", "your", "more",   "its", "now",   "some",
-                                  "could",   "will",   "then", "any", "than", "never",
-                                  "about", "has", "such",  "again", "before", "like", "much", "here",
-                                  "being", "come", "himself", "other",  "how", "well", "should"  ]
 
         # Goes through the entire file and takes the desired information for the statistics
         with open(file_path, "r", encoding='unicode_escape') as f:
@@ -31,7 +23,8 @@ class TextStatistics:
             f.close()
 
         # Counts the words that appears only one time in the file
-        self.__number_of_unique_words = list(self.__count_word_appearance.values()).count(1)
+        self.__number_of_unique_words = list(self.__count_word_appearance.values()).count(1) + list(
+            colors.values()).count(1)
 
         # Calculates the average sentence length in the text file
         self.__average_length = self.__number_of_words // self.__number_of_sentences
@@ -40,7 +33,7 @@ class TextStatistics:
         self.__max_appearance_word = max(list(self.__count_word_appearance.values()))
 
         # How many times the most popular word of which have no syntactic significance appeared in the text
-        self.__max_appearance_not_syntactic_word = max([val if key not in self.__syntactic_words else 0 for key, val in
+        self.__max_appearance_not_syntactic_word = max([val if syntactic_words.get(key) is None else 0 for key, val in
                                                         self.__count_word_appearance.items()])
         self.max_appearance()
 
@@ -62,7 +55,9 @@ class TextStatistics:
     # Extracts the desired information for statistics from a word in the file
     def word_statistics(self, word):
         word = remove_special_chars(word)
-        if word:
+        if word in colors.keys():
+            colors.update({word: colors.get(word) + 1})
+        elif word:
             if word in self.__count_word_appearance.keys():
                 self.__count_word_appearance.update({word: self.__count_word_appearance.get(word) + 1})
             else:
@@ -106,7 +101,7 @@ class TextStatistics:
     def max_appearance(self):
         flag = False
         for key, value in self.__count_word_appearance.items():
-            if (value == self.__max_appearance_not_syntactic_word) and (key not in self.__syntactic_words):
+            if (value == self.__max_appearance_not_syntactic_word) and (syntactic_words.get(key) is None):
                 self.__max_appearance_not_syntactic_word = key
                 if not flag:
                     self.__max_appearance_word = key
@@ -117,7 +112,7 @@ class TextStatistics:
 
     # Shows the statistics of the text file
     def show_statistics(self):
-        text = "\n============== Text Statistics ==============\n\n" + \
+        text = "\n=============== Text Statistics ===============\n\n" + \
                f"The amount of lines in the file : {self.__number_of_rows}, \n\n" + \
                f"The amount of words in the file : {self.__number_of_words}, \n\n" + \
                f"The amount of unique words in the file : {self.__number_of_unique_words},  \n\n" + \
@@ -128,4 +123,5 @@ class TextStatistics:
                f"\"{self.__max_appearance_not_syntactic_word}\", \n\n" + \
                "The longest word sequence in the text that does not contain the letter k : \n\n" + \
                f"\"{self.__longest_sequence_not_contain_k}\"."
-        print(text)
+        text += show_colors_statistics()
+        print(text+"\n============== End Of Statistics ==============")
